@@ -1,0 +1,30 @@
+{
+  "name": "461-final",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "test:createMovie": "curl -X POST -H \"Content-Type: application/json\" -d '{\"directorID\": 1, \"title\": \"Example Movie\", \"releaseDate\": \"2023-04-10\", \"runtime\": 120, \"genre\": \"Drama\", \"plotSummary\": \"An example movie plot.\"}' http://localhost:3001/movies",
+    "test:getMovie": "curl -X GET http://localhost:3001/movies",
+    "test:updateMovie": "curl -X PUT -H \"Content-Type: application/json\" -d '{\"title\": \"Updated Example Movie\"}' http://localhost:3001/movies/1",
+    "test:deleteMovie": "curl -X DELETE http://localhost:3001/movies/1",
+    "test:getMovieTitles": "curl -sS -X GET http://localhost:3001/movies/titles/console",
+    "test:getDirectorsAndStudios": "curl -sS -X GET http://localhost:3001/movies/directors-and-studios/console"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "knex": "^2.4.2",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
