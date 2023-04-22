@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const knex = require('knex')(require('./knexfile'));
@@ -22,6 +23,11 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors());
+
+// Serve the React frontend
+app.use(express.static(path.join(__dirname, '..', 'imdb-app', 'build')));
+
+
 
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
@@ -89,6 +95,10 @@ app.put('/userScoreAverages/:id', userScoreAverageHandlers.updateUserScoreAverag
 app.delete('/userScoreAverages/:id', userScoreAverageHandlers.deleteUserScoreAverage);
 
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'imdb-app', 'build', 'index.html'));
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
@@ -96,7 +106,7 @@ app.listen(PORT, () => {
 
 
 //for grading or testing. If you want to test the backend, we wrote in a few test scripts into the package.json, as well as npm run start.
-/* just run "npm install" first, then run "npm run start" which will use nodemon or do "node app.js" which also runs it.
+/* just run "npm install" while you are within the /backend folder first, then run "npm run start" which will use nodemon or do "node app.js" which also runs it.
     "start": "nodemon app.js",
     "test:createMovie": "curl -X POST -H \"Content-Type: application/json\" -d '{\"directorID\": 1, \"title\": \"Example Movie\", \"releaseDate\": \"2023-04-10\", \"runtime\": 120, \"genre\": \"Drama\", \"plotSummary\": \"An example movie plot.\"}' http://localhost:3001/movies",
     "test:getMovie": "curl -X GET http://localhost:3001/movies",
