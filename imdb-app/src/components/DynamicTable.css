@@ -1,0 +1,30 @@
+/* DynamicTable.css */
+table {
+  border-collapse: collapse;
+  background-color: #333;
+  color: #f5c518;
+  max-width: 1200px;
+  width: auto;
+}
+
+
+  
+  th,
+  td {
+    padding: 10px;
+    border: 1px solid #f5c518;
+    text-align: left;
+  }
+  
+  .table-header {
+    text-transform: capitalize;
+    font-weight: bold;
+    background-color: #f5c518;
+    color: #222;
+    border: 1px solid #222;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #222;
+  }
+  
