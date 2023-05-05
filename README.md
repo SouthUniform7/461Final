@@ -26,6 +26,12 @@ and in your browser, go to http://localhost:3001 and you will be served the fron
 additional testing instructions for the backend can be found at the bottom of backend/app.js
 
 
+
+
+
+
+
+
 ##SQLITE3 SETUP FOR DATABASE TESTING
 
 USE COMMAND PROMPT, NOT POWERSHELL OR GITBASH
